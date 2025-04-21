@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$categories = [
+       [
+       'id'=>1,
+       'name'=>'mobile',
+       'children'=>[
+            [
+              'id'=>2,
+              'name'=>'hello_world',
+              'children'=>[
+                [
+                  'id'=>5,
+                  'name'=>'this is five',
+                  'children'=>[]
+                ]
+              ]
+            ]
+       ]
+       
+       ],
+        [
+       'id'=>2,
+       'name'=>'mobile',
+       'children'=>[
+            [
+            'id'=>10,
+            'name'=>'testtting',
+            'children'=>[]
+            ]     
+       ]
+       
+       ]
+];
+function displayCategories($categories, $level = 0)
+{
+    foreach ($categories as $category) {
+        echo str_repeat('--', $level) . ' ' . $category['name'] . "<br>";
+        if (!empty($category['children'])) {
+            displayCategories($category['children'], $level + 1);
+        }
+    }
+}
+
+echo displayCategories($categories);
+?> 
+
+</body>
+</html>
